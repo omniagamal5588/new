@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <svg style="width: 400px;height:300px;background-color:aqua" >
+        <rect x="50" y="100" width="150px" height="100px" style="fill:blue" ></rect>
+        <circle cx="150" cy="60" r="20" style="fill: red;"></circle>
+        <!-- <polygon points="20,60 105,60 30,90 100,60 300,250"></polygon> -->
+         <polygon points="50,100 150,50 150,250"></polygon>
+    </svg>
+    <script>
+        var cir = document.getElementsByTagName("circle")[0];
+        cir.style.fill = "green";
+    </script>
+    
+</body>
+</html>

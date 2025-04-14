@@ -1,0 +1,18 @@
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: burlywood;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+}

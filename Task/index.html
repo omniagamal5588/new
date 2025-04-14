@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <title>Simple Markers</title>
+
+    <!-- <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./index.js"></script> -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+        #map {
+            height: 100%;
+        }
+
+        /* 
+ * Optional: Makes the sample page fill the window. 
+ */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Google Map and Country Dropdown</h1>
+    <select id="country-dropdown">
+        <option value="">Select a country</option>
+        <option value="usa">United States</option>
+        <option value="uk">United Kingdom</option>
+        <option value="france">France</option>
+        <option value="germany">Germany</option>
+    </select>
+    <button id="current-location-button">Show My Location</button>
+    <div id="map"></div>
+
+
+    <!-- 
+      The `defer` attribute causes the script to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises. See
+      https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+        defer></script>
+
+    <script>
+        function initMap(x, y) {
+            const myLatLng = { lat: x, lng: y };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: myLatLng,
+            });
+
+            new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: "Hello World!",
+            });
+        }
+
+        function getCurrentLocation() {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    initMap(latitude,longitude);
+                },
+                (error) => {
+                    console.error('Error getting user location:', error);
+                    
+                }
+            );
+        }
+    </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
